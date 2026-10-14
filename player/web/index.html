@@ -1,0 +1,98 @@
+<!doctype html>
+<!--
+  Browser shell for the WebAssembly build of DS Player. The player picks a
+  .nds file; it is read in the browser (nothing is uploaded) and written into
+  Emscripten's in-memory filesystem before main() starts. Saves live in an
+  IndexedDB-backed folder so they survive reloads.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DS Player</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section id="start" class="panel">
+        <h1>DS Player</h1>
+        <p>
+          Plays Nintendo DS games in the browser with the
+          <a
+            href="https://melonds.kuribo64.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            >melonDS</a
+          >
+          core, compiled to WebAssembly. Pick a <code>.nds</code> file to start.
+          The file is read locally by your browser and never uploaded.
+        </p>
+
+        <div class="actions">
+          <button type="button" id="pick" class="primary">Select ROM</button>
+          <button type="button" id="recent" hidden>Load recent ROM</button>
+        </div>
+        <input type="file" id="rom-input" accept=".nds" hidden />
+        <p id="recent-name" class="fine" hidden></p>
+
+        <h2>Controls</h2>
+        <table class="controls">
+          <tbody>
+            <tr>
+              <th>D-pad</th>
+              <td>Arrow keys</td>
+            </tr>
+            <tr>
+              <th>A / B / X / Y</th>
+              <td>X / Z / S / A</td>
+            </tr>
+            <tr>
+              <th>L / R</th>
+              <td>Q / W</td>
+            </tr>
+            <tr>
+              <th>Start / Select</th>
+              <td>Enter / Backspace</td>
+            </tr>
+            <tr>
+              <th>Touch screen</th>
+              <td>Click or drag on the bottom screen</td>
+            </tr>
+            <tr>
+              <th>Fast-forward</th>
+              <td>Hold Tab</td>
+            </tr>
+            <tr>
+              <th>Layout / Smoothing</th>
+              <td>F2 / F4</td>
+            </tr>
+            <tr>
+              <th>Reset</th>
+              <td>Ctrl+R</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="fine">
+          Gamepads work too: the right face button is A, as on the DS.
+        </p>
+      </section>
+
+      <section id="game" hidden>
+        <div id="stage">
+          <canvas id="canvas" tabindex="-1"></canvas>
+        </div>
+        <div class="toolbar">
+          <button type="button" id="fullscreen">Fullscreen</button>
+          <button type="button" id="export-save">Export save</button>
+          <button type="button" id="import-save">Import save</button>
+          <button type="button" id="change-rom">Change ROM</button>
+          <input type="file" id="save-input" accept=".sav,.dsv,.bin" hidden />
+        </div>
+        <pre id="log" aria-live="polite"></pre>
+      </section>
+    </main>
+
+    <script src="ds-player.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

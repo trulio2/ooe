@@ -1,0 +1,7 @@
+[submodule "player/thirdparty/melonDS"]
+	path = player/thirdparty/melonDS
+	url = https://github.com/melonDS-emu/melonDS
+[submodule "player/thirdparty/SDL"]
+	path = player/thirdparty/SDL
+	url = https://github.com/libsdl-org/SDL
+	shallow = true

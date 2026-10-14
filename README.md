@@ -9,18 +9,24 @@ Castlevania: Order of Ecclesia
 [Discord Badge]: https://img.shields.io/static/v1?message=Discord&logo=discord&labelColor=5c5c5c&color=7289DA&logoColor=white&label=%20
 [discord]: https://discord.gg/gwN6M3HQrA
 
-A work-in-progress decompilation of *Castlevania: Order of Ecclesia*.
+A work-in-progress decompilation of _Castlevania: Order of Ecclesia_.
 
 This repository does **not** contain any game assets or assembly code. To build the ROM, you must own an existing copy of the game.
 
 The following DS versions of the game are supported:
-* `YR9E00`: USA, Rev 0
-* `YR9J00`: JPN, Rev 0
-* `YR9K00`: KOR, Rev 0
-* `YR9P00`: PAL, Rev 0
+
+- `YR9E00`: USA, Rev 0
+- `YR9J00`: JPN, Rev 0
+- `YR9K00`: KOR, Rev 0
+- `YR9P00`: PAL, Rev 0
 
 > [!NOTE]
 > Only the original DS versions are supported. The Castlevania Dominus Collection versions (PC, Switch, PS5, Xbox Series X/S) are not supported.
 
 ## How to install
+
 See [INSTALL.md](INSTALL.md) for instructions on how to install the project.
+
+## Playing the build
+
+[`player/`](player/README.md) is a small melonDS-based player that runs the built ROM as a desktop program or in the browser.

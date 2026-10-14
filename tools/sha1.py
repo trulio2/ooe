@@ -16,13 +16,14 @@ args = parser.parse_args()
 file_path = Path(args.file)
 checksum_path = Path(args.checksum_file)
 
+# Each non-empty line is "<sha1>  <name>"; any listed dump counts as a match.
 with checksum_path.open('r') as file:
-    target_sha1, _ = file.readline().split(' ', 1)
+    target_sha1s = {line.split(' ', 1)[0] for line in file if line.strip()}
 
 with file_path.open('rb') as file:
     file_sha1 = hashlib.sha1(file.read()).hexdigest()
 
-if target_sha1 != file_sha1:
+if file_sha1 not in target_sha1s:
     eprint(f"{file_path}: FAILED")
     exit(1)
 else:

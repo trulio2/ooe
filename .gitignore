@@ -20,3 +20,4 @@ build.ninja
 ghidra/exports
 ghidra/*$py.class
 /*.txt
+*.sav.tmp
